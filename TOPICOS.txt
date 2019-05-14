@@ -1,4 +1,4 @@
-TÓPICOS
+# # # # # # # # TÓPICOS # # # # # # # #
 
 Como usar o GIT
 	- git pull  (atualizar)
@@ -6,3 +6,8 @@ Como usar o GIT
 	- git add * ou nomearq.txt (para adicionar oq foi modificado)
 	- git commit -m 'comentario'
 	- git push (enviar)
+
+# pesquisar
+	- || como inserir som
+	- || layout dos mapas prontos (Luan)
+	- || tela inicial em assembly pronto, tomar como base a tela do exemplo em C (Caique)
