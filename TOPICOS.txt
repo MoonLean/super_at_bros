@@ -1,5 +1,8 @@
 TÓPICOS
 
-aqui a gente aidiciona topicos
-
-caique, adicionei isso
+Como usar o GIT
+	- git pull  (atualizar)
+	- git status (para saber oq modifiquei)
+	- git add * ou nomearq.txt (para adicionar oq foi modificado)
+	- git commit -m 'comentario'
+	- git push (enviar)
