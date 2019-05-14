@@ -1,4 +1,4 @@
-"SUPER @ BROS" é um jogo desenvolvido em assembly, como requisito parcial de aprovação na disciplina "Laboratório de Arquitetura e Organização de Computadores 2" ministrada pelo prof. Dr. Luciano Neris.
+"SUPER @ BROS" é um jogo desenvolvido em assembly, como requisito parcial para aprovação na disciplina "Laboratório de Arquitetura e Organização de Computadores 2" ministrada pelo prof. Dr. Luciano Neris.
 
 
 
@@ -12,7 +12,7 @@ Coloquei isso:
 ### Blablablo
 
 ```
-Codigo aki
-sudo apt-get nada
+
+aqui são trechos de código
 
 ```
