@@ -10,3 +10,9 @@ Coloquei isso:
 
 
 ### Blablablo
+
+```
+Codigo aki
+sudo apt-get nada
+
+```
