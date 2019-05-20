@@ -11,3 +11,4 @@ Como usar o GIT
 	- || como inserir som
 	- || layout dos mapas prontos (Luan)
 	- || tela inicial em assembly pronto, tomar como base a tela do exemplo em C (Caique)
+	- || alterar a cor dos caracteres
