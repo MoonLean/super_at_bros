@@ -78,6 +78,9 @@ colete as letras espalhadas pelo mapa para desbloquear o acesso
 ao portal ($)
 _ _ _
 
+quando as 3 letras são coletadas o portão "------" eh substituido por espaco vazio
+
+
 ##################################################
 #                                                #
 #                                         OX     #
@@ -101,9 +104,10 @@ _ _ _
 
 mapa 4:
 ; após coletar as letras X C e S o portal sérá aberto
+; "|" portão
 
 ##################################################
-#                               X          #   $ #
+#                               X          |   $ #
 #   O#############################################
 #    #OC                                   #   @ #
 #    #  #################################  #     #
