@@ -103,7 +103,7 @@ quando as 3 letras são coletadas o portão "------" eh substituido por espaco v
 ##################################################
 
 mapa 4:
-; após coletar as letras X C e S o portal sérá aberto
+; após coletar as letras X C e S o portal será aberto
 ; "|" portão
 
 ##################################################
