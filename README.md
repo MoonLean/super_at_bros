@@ -1,18 +1,8 @@
-"SUPER @ BROS" é um jogo desenvolvido em assembly, como requisito parcial para aprovação na disciplina "Laboratório de Arquitetura e Organização de Computadores 2" ministrada pelo prof. Dr. Luciano Neris.
 
 
+# SUPER @ BROS
 
-Coloquei isso:
-
-# Trabalho Neris
-
-## Blabla
+**"SUPER @ BROS"** é um jogo arcade ASCII desenvolvido na línguagem Assembly, que utiliza-se da biblioteca [Irvine32][irvine32], como requisito parcial para aprovação na disciplina Arquitetura e Organização de Computadores II da Universidade Federal de São Carlos, curso: Engenharia de Computacão.
 
 
-### Blablablo
-
-```
-
-aqui são trechos de código
-
-```
+[irvine32]: <http://kipirvine.com/asm/>
