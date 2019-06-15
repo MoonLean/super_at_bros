@@ -16,7 +16,7 @@ INCLUDE criaturas.asm
 	;coloquei dword pq ela sera atribuiba a um reg esi
 	PERSON DWORD 53
 
-	VERTIC CRI_VERTICAL <98, 1>,<99, 1>;,<245, 1>,<264, 1>,<315, 1>,<317, 1>,<588, 1>
+	VERTIC CRI_VERTICAL <98, 1>,<99, 1>,<245, 1>,<246,1>,<315, 1>,<317, 1>,<588, 1>;
 	CURR_DELAY DWORD 0
 	
 	GAME_OVER BYTE "VOCÊ PERDEU!", 0AH
@@ -160,6 +160,7 @@ INPUT::
 	JNE NEXT_INPUT 
 	
 	; do contrario
+	MOV CURR_DELAY, 0	; zera a contagem
 	MOV ECX, LENGTHOF VERTIC
 	MOV EDI, 0
 	JMP _CRIATURAS
@@ -190,83 +191,9 @@ INPUT::
 	; por isso simplesmente segue p/ INPUT
 	JMP INPUT
 
-
-
-_CRIATURAS::
-	
-	; verifica se todas as criaturas verticais ja foram alteradas
-	CMP ECX, 0
-	JE INPUT
-	
-	
-
-	PUSH VERTIC[EDI].POS
-	MOV ESI, VERTIC[EDI].POS
-	
-	;----------------------------
-	TEST VERTIC[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
-	JZ DESCENDO 				;
-	SUB ESI,  COLUNAS			;
-	JMP LINE					;	 
-	DESCENDO:					;
-	ADD ESI, COLUNAS			;
-	LINE:						;
-	;----------------------------
-	
-	CMP mapa1[ESI], SPACE
-	JNE CAPTUROU
-	
-	; otherwise..
-	MOV mapa1[ESI], CRIATURA
-	POP VERTIC[EDI].POS
-
-	MOV EDX, VERTIC[EDI].POS
-	
-	MOV ESI, VERTIC[EDI].POS
-	MOV mapa1[ESI], SPACE
-	
-	;----------------------------
-	TEST VERTIC[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
-	JZ _DESCENDO 				;
-	SUB VERTIC[EDI].POS, COLUNAS;
-	JMP _LINE					;	 
-	_DESCENDO:					;
-	ADD VERTIC[EDI].POS, COLUNAS;
-	_LINE:						;
-	;----------------------------
-		
-	MOV CURR_DELAY, 0	; zera a contagem
-	
-	DEC ECX
-	ADD EDI, TYPE CRI_VERTICAL
-	JMP _CRIATURAS				; ESPECIE DE RETORNO
-	
-CAPTUROU:
-	CMP mapa1[ESI], PERSONAGEM
-	JNE WALL
-	; otherwise
-	JMP QUIT
-	
-WALL:
-								;----------------------------
-	XOR VERTIC[EDI].DIR, 1 		; TEST VERTIC.DIR, 1		; 
-	; acrescentei este pop para	;
-	; reverter o pop feito no	;
-	; inicio					;
-	POP EAX						;JZ _DESCENDO 				;
-	JMP _CRIATURAS				;MOV	VERTIC.DIR, 2		;
-								;JMP _LINE					;
-								;_DESCENDO:					;
-								;MOV VERTIC.DIR, 1			;
-								;_LINE:						;
-								;----------------------------	
-; END _CRIATURAS ROTINA
-
 QUIT::
 	EXIT
 	
 MAIN ENDP
 END MAIN
-
-
 
