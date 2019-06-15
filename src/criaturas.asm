@@ -34,16 +34,16 @@ _CRIATURAS::
 	
 	
 
-	PUSH VERTIC[EDI].POS
-	MOV ESI, VERTIC[EDI].POS
+	PUSH ARR_CRIATURAS[EDI].POS
+	MOV ESI, ARR_CRIATURAS[EDI].POS
 	
-	TEST VERTIC[EDI].SENTIDO, 1 ; 1 -> EIXO Y, 0 -> EIXO X
+	TEST ARR_CRIATURAS[EDI].SENTIDO, 1 ; 1 -> EIXO Y, 0 -> EIXO X
 	JZ EIXO_X
 	
 	; otherwise
 	; EIXO Y
 	;----------------------------
-	TEST VERTIC[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
+	TEST ARR_CRIATURAS[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
 	JZ DESCENDO 				;
 	SUB ESI,  COLUNAS			;
 	JMP LINE					;	 
@@ -55,7 +55,7 @@ _CRIATURAS::
 	
 	EIXO_X:
 	;----------------------------
-	TEST VERTIC[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
+	TEST ARR_CRIATURAS[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
 	JZ VOLTANDO 				;
 	INC ESI						;
 	JMP OVER_VOLTANDO			;	 
@@ -71,23 +71,23 @@ _CRIATURAS::
 	
 	; otherwise..
 	MOV mapa1[ESI], CRIATURA
-	POP VERTIC[EDI].POS
+	POP ARR_CRIATURAS[EDI].POS
 	
-	MOV ESI, VERTIC[EDI].POS
+	MOV ESI, ARR_CRIATURAS[EDI].POS
 	MOV mapa1[ESI], SPACE
 	
-	TEST VERTIC[EDI].SENTIDO, 1
+	TEST ARR_CRIATURAS[EDI].SENTIDO, 1
 	JNZ EIXO_Y
 	
 	; otherwise
 	;--------------------------------------------------
 	;----------------------------
-	TEST VERTIC[EDI].DIR, 1		;
+	TEST ARR_CRIATURAS[EDI].DIR, 1		;
 	JZ OVER__VOLTANDO 			;
-	INC VERTIC[EDI].POS			;	
+	INC ARR_CRIATURAS[EDI].POS			;	
 	JMP OVER__LINE				;	 					ATUALIZAR POSICAO DA CRIATURA QUE SE MOVIMENTA EM X
 	OVER__VOLTANDO:				;
-	DEC VERTIC[EDI].POS			;
+	DEC ARR_CRIATURAS[EDI].POS			;
 	OVER__LINE:					;
 	;----------------------------	
 	JMP OVER_EIXO_Y
@@ -96,12 +96,12 @@ _CRIATURAS::
 	;--------------------------------------------------
 	EIXO_Y:
 	;----------------------------
-	TEST VERTIC[EDI].DIR, 1		;
+	TEST ARR_CRIATURAS[EDI].DIR, 1		;
 	JZ _DESCENDO 				;
-	SUB VERTIC[EDI].POS, COLUNAS;
+	SUB ARR_CRIATURAS[EDI].POS, COLUNAS;
 	JMP _LINE					;	 					ATUALIZAR POSICAO DA CRIATURA QUE SE MOVIMENTA EM Y
 	_DESCENDO:					;
-	ADD VERTIC[EDI].POS, COLUNAS;
+	ADD ARR_CRIATURAS[EDI].POS, COLUNAS;
 	_LINE:						;
 	;----------------------------	
 	OVER_EIXO_Y:
@@ -109,7 +109,7 @@ _CRIATURAS::
 
 	
 	DEC ECX
-	ADD EDI, TYPE CRI_VERTICAL
+	ADD EDI, TYPE CRIATURA_DINAMICA
 	JMP _CRIATURAS				; ESPECIE DE RETORNO
 	
 CAPTUROU:
@@ -119,7 +119,7 @@ CAPTUROU:
 	JMP QUIT
 	
 WALL:
-	XOR VERTIC[EDI].DIR, 1 		
+	XOR ARR_CRIATURAS[EDI].DIR, 1 		
 	; acrescentei este pop para	
 	; reverter o pop feito no	
 	; inicio					

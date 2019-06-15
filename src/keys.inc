@@ -14,7 +14,8 @@ OBJETIVO			= 24h		; $
 CRIATURA			= 4Fh		; O	 
 LINHAS				= 20d
 COLUNAS				= 51d
-BONUS 				= 43h		; +
+BONUS 				= 2Bh		; +
+BONIFICACAO			= 25d		; cada simbolo bonus vale 25pts
 w					= 'w'		;
 d					= 'd'		; 
 s					= 73h 		;'s'
@@ -26,15 +27,19 @@ A					= 'A'		; 97h		; a
 
 DELAY_CRIATURA		= 50		; a cada n prints de tela a posicao da criatura eh atualizada
 								; sendo DELAY_CRIATURA = n
-
+								
 ;---------------------------------------------------------------------
 ;						S	T	R	U	C	T	S
 ;---------------------------------------------------------------------
 
-CRI_VERTICAL STRUCT
+;
+;
+;
+;
+CRIATURA_DINAMICA STRUCT
 	POS DWORD ?
-	DIR BYTE ?		; 1 SUBINDO, 0 DESCENDO
+	DIR BYTE ?
 	SENTIDO BYTE ?
-CRI_VERTICAL ENDS
+CRIATURA_DINAMICA ENDS
 
 .LIST ; reabilita listfile
