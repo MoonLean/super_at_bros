@@ -18,4 +18,4 @@ Como usar o GIT
 	- || tela game over
 	- || tela informações
 	- |OK| movimento personagem
-	- || movimento criatura
+	- || movimento criatura (Luan) .. fazendo
