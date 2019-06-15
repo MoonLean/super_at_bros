@@ -1,4 +1,4 @@
-TITLE DINAMICA DAS CRIATURAS
+TITLE DINAMICA DAS CRIATURAS, SUPER @ BROS
 
 INCLUDE keys.inc
 
@@ -7,6 +7,7 @@ INCLUDE keys.inc
 
 ;
 ;	PROCEDIMENTO PARA IMPRIMIR MAPA
+;
 ;
 PRINT_MAPA PROC
 
@@ -19,6 +20,11 @@ PRINT_MAPA PROC
 	RET
 PRINT_MAPA ENDP
 
+;
+;
+;
+;
+;
 _CRIATURAS_ PROC
 _CRIATURAS::
 	
@@ -31,6 +37,11 @@ _CRIATURAS::
 	PUSH VERTIC[EDI].POS
 	MOV ESI, VERTIC[EDI].POS
 	
+	TEST VERTIC[EDI].SENTIDO, 1 ; 1 -> EIXO Y, 0 -> EIXO X
+	JZ EIXO_X
+	
+	; otherwise
+	; EIXO Y
 	;----------------------------
 	TEST VERTIC[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
 	JZ DESCENDO 				;
@@ -40,28 +51,61 @@ _CRIATURAS::
 	ADD ESI, COLUNAS			;
 	LINE:						;
 	;----------------------------
+	JMP OVER_EIXO_X
+	
+	EIXO_X:
+	;----------------------------
+	TEST VERTIC[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
+	JZ VOLTANDO 				;
+	INC ESI						;
+	JMP OVER_VOLTANDO			;	 
+	VOLTANDO:					;
+	DEC ESI						;
+	OVER_VOLTANDO:				;
+	;----------------------------
+	OVER_EIXO_X:
 	
 	CMP mapa1[ESI], SPACE
 	JNE CAPTUROU
+	; se chegou ate aqui, significa que o campo destino estava vazio
 	
 	; otherwise..
 	MOV mapa1[ESI], CRIATURA
 	POP VERTIC[EDI].POS
-
-	MOV EDX, VERTIC[EDI].POS
 	
 	MOV ESI, VERTIC[EDI].POS
 	MOV mapa1[ESI], SPACE
 	
+	TEST VERTIC[EDI].SENTIDO, 1
+	JNZ EIXO_Y
+	
+	; otherwise
+	;--------------------------------------------------
+	;----------------------------
+	TEST VERTIC[EDI].DIR, 1		;
+	JZ OVER__VOLTANDO 			;
+	INC VERTIC[EDI].POS			;	
+	JMP OVER__LINE				;	 					ATUALIZAR POSICAO DA CRIATURA QUE SE MOVIMENTA EM X
+	OVER__VOLTANDO:				;
+	DEC VERTIC[EDI].POS			;
+	OVER__LINE:					;
+	;----------------------------	
+	JMP OVER_EIXO_Y
+	;--------------------------------------------------
+	
+	;--------------------------------------------------
+	EIXO_Y:
 	;----------------------------
 	TEST VERTIC[EDI].DIR, 1		;
 	JZ _DESCENDO 				;
 	SUB VERTIC[EDI].POS, COLUNAS;
-	JMP _LINE					;	 
+	JMP _LINE					;	 					ATUALIZAR POSICAO DA CRIATURA QUE SE MOVIMENTA EM Y
 	_DESCENDO:					;
 	ADD VERTIC[EDI].POS, COLUNAS;
 	_LINE:						;
-	;----------------------------
+	;----------------------------	
+	OVER_EIXO_Y:
+	;--------------------------------------------------
 
 	
 	DEC ECX
@@ -85,6 +129,3 @@ WALL:
 ; END _CRIATURAS ROTINA
 
 _CRIATURAS_ ENDP
-
-
-

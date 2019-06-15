@@ -10,19 +10,22 @@ TITLE SUPER@BROS - JOGO BASEADO EM ASSEMBLY
 ;
 ; Creation Date:			28 de Maio de 2019
 
-INCLUDE Irvine32.inc	
+INCLUDE Irvine32.inc		;
+INCLUDE keys.inc			;
+INCLUDE nivel1.asm			;
+INCLUDE Macros.inc			;
+INCLUDE criaturas.asm		;
 ; other inclusions
 
-.DATA
-	; insert variables
-	
+.DATA	
 
 .CODE
 main PROC
-	; instuctions
+	CALL NIVEL1
 	
+	
+	QUIT::	
 EXIT
 main ENDP
-	; insert additional procedures
 	
 END main 

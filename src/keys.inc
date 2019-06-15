@@ -1,5 +1,4 @@
 ; CARACTERES ASCII E SEUS RESPECTIVOS CODIGOS HEXADECIMAIS
-
 .NOLIST
 
 ;---------------------------------------------------------------------
@@ -8,7 +7,7 @@
 
 
 SPACE				= 20h 		; espaço
-BLOCK				= 219h
+BLOCK				= 2Ah
 OBJ_IMOVEL			= 23h		; #
 PERSONAGEM			= 40h		; @
 OBJETIVO			= 24h		; $
@@ -18,13 +17,15 @@ COLUNAS				= 51d
 BONUS 				= 43h		; +
 w					= 'w'		;
 d					= 'd'		; 
-s					= 73h 		;'s'		; 
+s					= 73h 		;'s'
 a					= 'a'		; 
 W					= 'W'		; 119h		; w
 D					= 'D'		; 100h		; d
 S					= 'S'		; 115h		; s
 A					= 'A'		; 97h		; a
-DELAY_CRIATURA		= 50		; 
+
+DELAY_CRIATURA		= 50		; a cada n prints de tela a posicao da criatura eh atualizada
+								; sendo DELAY_CRIATURA = n
 
 ;---------------------------------------------------------------------
 ;						S	T	R	U	C	T	S
@@ -33,8 +34,7 @@ DELAY_CRIATURA		= 50		;
 CRI_VERTICAL STRUCT
 	POS DWORD ?
 	DIR BYTE ?		; 1 SUBINDO, 0 DESCENDO
+	SENTIDO BYTE ?
 CRI_VERTICAL ENDS
-
-
 
 .LIST ; reabilita listfile

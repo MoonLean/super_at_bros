@@ -1,22 +1,17 @@
-TITLE mapa tentativa um
+TITLE NIVEL 1, SUPER @ BROS
 
-; formula para me retornar o elemento no array mapa1:
-;			começando em 0
-;			mapa1[x + (y * (COLUNAS+1))]
-;
-
-INCLUDE Irvine32.inc
-INCLUDE keys.inc
-INCLUDE Macros.inc
-INCLUDE criaturas.asm
-
+; Module Description:
+; Author:
+; Creation Date:
 
 .DATA
 	;coordenada inicial do personagem
 	;coloquei dword pq ela sera atribuiba a um reg esi
-	PERSON DWORD 53
+	PERSON DWORD 461
 
-	VERTIC CRI_VERTICAL <98, 1>,<99, 1>,<245, 1>,<246,1>,<315, 1>,<317, 1>,<588, 1>;
+	VERTIC	\
+	CRI_VERTICAL <506, 1, 1>, <507, 1, 1>,<653, 1, 1>,<654, 1, 1>,<723, 1, 1>,<725, 1, 1>,<996, 1, 1>,<779, 1, 0>,<1276, 1 ,0>
+	
 	CURR_DELAY DWORD 0
 	
 	GAME_OVER BYTE "VOCÊ PERDEU!", 0AH
@@ -24,6 +19,14 @@ INCLUDE criaturas.asm
 	
 
 	mapa1 \
+	BYTE 9 DUP(BLOCK,SPACE), "SUPER @ BROS ",9 DUP(BLOCK,SPACE), BLOCK,0AH
+	BYTE BLOCK,"                                                ", BLOCK, 0AH
+	BYTE BLOCK,"   NIVEL 1                                      ", BLOCK, 0AH
+	BYTE BLOCK,"                                                ", BLOCK, 0AH
+	BYTE BLOCK,"   PONTOS: 0000             TEMPO: 000          ", BLOCK, 0AH
+	BYTE BLOCK,"                                                ", BLOCK, 0AH
+	BYTE BLOCK,"   TAREFA:                                      ", BLOCK, 0AH
+	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE "##################################################", 0AH
 	BYTE "# @                                            OO#", 0AH
 	BYTE "#                                                #", 0AH
@@ -31,7 +34,7 @@ INCLUDE criaturas.asm
 	BYTE "#     #                                  OO#     #", 0AH
 	BYTE "#     #                                    #     #", 0AH
 	BYTE "#     #  O O #      #################      #     #", 0AH
-	BYTE "#     #      #                      #      #     #", 0AH
+	BYTE "#     #      #O                     #      #     #", 0AH
 	BYTE "#     #      #      ############    #      #     #", 0AH
 	BYTE "#     #      #      # $        #    #      #     #", 0AH
 	BYTE "#     #      #      #          #    #      #     #", 0AH
@@ -41,14 +44,14 @@ INCLUDE criaturas.asm
 	BYTE "#     #                                    #     #", 0AH
 	BYTE "#     #                                    #     #", 0AH
 	BYTE "#     ###############################      #     #", 0AH
-	BYTE "#                                                #", 0AH
+	BYTE "#O                                      #        #", 0AH
 	BYTE "#                                                #", 0AH
 	BYTE "##################################################", 0AH
 
 .CODE
-MAIN PROC
-	
-	; pula para a rotina que aguarda a leitura do teclado
+
+NIVEL1 PROC
+; pula para a rotina que aguarda a leitura do teclado
 
 	JMP INPUT
 	
@@ -191,9 +194,6 @@ INPUT::
 	; por isso simplesmente segue p/ INPUT
 	JMP INPUT
 
-QUIT::
-	EXIT
-	
-MAIN ENDP
-END MAIN
+NIVEL1 ENDP
+
 
