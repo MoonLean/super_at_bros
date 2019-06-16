@@ -14,14 +14,12 @@ TITLE NIVEL 1, SUPER @ BROS
 	ARR_CRIATURAS \
 	CRIATURA_DINAMICA <506, 1, 1>, <507, 1, 1>,<653, 1, 1>,<654, 1, 1>,<723, 1, 1>,<725, 1, 1>,<996, 1, 1>,<779, 1, 0>,<1276, 1 ,0>
 	
-	;
+	
 	CURR_DELAY DWORD 0
 	
-	PONTUACAO BYTE 0d
+	PONTUACAO BYTE "123456789"
+	CURR_PT BYTE 0
 	
-	MISSAO BYTE "_ _ _"
-	
-	GAME_OVER BYTE "VOCÊ PERDEU!", 0AH
 	SUCESSO BYTE "PARABENS MEU CONSGRADO", 0AH
 	
 
@@ -32,27 +30,27 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE BLOCK,"   PONTOS: 0000             TEMPO: 000          ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
-	BYTE BLOCK,"   TAREFA: ",MISSAO,"                                ", BLOCK, 0AH
+	BYTE BLOCK,"   TAREFA:                                      ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE "##################################################", 0AH
 	BYTE "# @                                            OO#", 0AH
-	BYTE "#     +                                          #", 0AH
-	BYTE "#     ######################################     #", 0AH
+	BYTE "#                                                #", 0AH
+	BYTE "#     ######################################+    #", 0AH
 	BYTE "#     #                                  OO#     #", 0AH
 	BYTE "#     #                                    #     #", 0AH
-	BYTE "#     #  O O #      #################      #     #", 0AH
+	BYTE "#     #  O+O #      #################      #     #", 0AH
 	BYTE "#     #      #O                     #      #     #", 0AH
 	BYTE "#     #      #      ############    #      #     #", 0AH
-	BYTE "#     #      #      # $        #    #      #     #", 0AH
-	BYTE "#     #      #      #          #    #      #     #", 0AH
+	BYTE "#     #      #     +# $        # +  #      #     #", 0AH
+	BYTE "#     #      #      #    +     #    #      #     #", 0AH
 	BYTE "#     #      #      #######O   #    #      #     #", 0AH
 	BYTE "#     #      #                      #      #     #", 0AH
 	BYTE "#     #      ########################      #     #", 0AH
 	BYTE "#     #                                    #     #", 0AH
-	BYTE "#     #                                    #     #", 0AH
+	BYTE "#     #+                                   #     #", 0AH
 	BYTE "#     ###############################      #     #", 0AH
-	BYTE "#O                                      #        #", 0AH
-	BYTE "#                                                #", 0AH
+	BYTE "#O                                      # +      #", 0AH
+	BYTE "#+                                               #", 0AH
 	BYTE "##################################################", 0AH
 
 .CODE
@@ -76,8 +74,11 @@ NIVEL1 PROC
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_U
-			
-			ADD PONTUACAO, BONIFICACAO			
+				MOVZX EDI, CURR_PT
+				MOV DL, PONTUACAO[EDI]
+				MOV mapa1[218], DL
+				INC CURR_PT
+			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
 			OVER_BONUS_U:
 	
@@ -103,8 +104,11 @@ NIVEL1 PROC
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_R
-			
-			ADD PONTUACAO, BONIFICACAO			
+				MOVZX EDI, CURR_PT
+				MOV DL, PONTUACAO[EDI]
+				MOV mapa1[218], DL
+				INC CURR_PT
+			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
 			OVER_BONUS_R:
 	
@@ -129,8 +133,11 @@ NIVEL1 PROC
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_D
-			
-			ADD PONTUACAO, BONIFICACAO			
+				MOVZX EDI, CURR_PT
+				MOV DL, PONTUACAO[EDI]
+				MOV mapa1[218], DL
+				INC CURR_PT
+			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
 			OVER_BONUS_D:
 	
@@ -151,12 +158,15 @@ NIVEL1 PROC
 	LEFT:	MOV ESI, PERSON
 			DEC ESI
 			MOV AH, mapa1[ESI]
-			
+				
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_L
-			MOV MISSAO[0], 'X'
-			ADD PONTUACAO, BONIFICACAO			
+				MOVZX EDI, CURR_PT
+				MOV DL, PONTUACAO[EDI]
+				MOV mapa1[218], DL
+				INC CURR_PT
+			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
 			OVER_BONUS_L:
 	
@@ -177,11 +187,7 @@ NIVEL1 PROC
 	CREATURE:	CMP AH, CRIATURA
 				JNE CHEGADA
 				
-				; se chegou aqui, esbarrou com criatura, prosseguir para tela GAME_OVER
-				;CALL Clrscr
-				;MOV EDX, OFFSET GAME_OVER
-				;ALL WriteString
-				JMP QUIT
+				CALL GAMEOVER
 
 
 	CHEGADA:	CMP AH, OBJETIVO

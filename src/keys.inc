@@ -7,7 +7,7 @@
 
 
 SPACE				= 20h 		; espaço
-BLOCK				= 2Ah
+BLOCK				= 20h
 OBJ_IMOVEL			= 23h		; #
 PERSONAGEM			= 40h		; @
 OBJETIVO			= 24h		; $

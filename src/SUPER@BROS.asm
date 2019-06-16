@@ -10,11 +10,14 @@ TITLE SUPER@BROS - JOGO BASEADO EM ASSEMBLY
 ;
 ; Creation Date:			28 de Maio de 2019
 
+
 INCLUDE Irvine32.inc		;
 INCLUDE keys.inc			;
+INCLUDE gameover.asm		;
 INCLUDE nivel1.asm			;
 INCLUDE Macros.inc			;
 INCLUDE criaturas.asm		;
+
 ; other inclusions
 
 .DATA	
