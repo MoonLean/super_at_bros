@@ -8,7 +8,7 @@ Como usar o GIT
 	- git push (enviar)
 
 # pesquisar
-	- || como inserir som
+	- |OK| como inserir som
 	- |OK| layout dos mapas prontos (Luan)
 	- || tela inicial em assembly pronto, tomar como base a tela do exemplo em C (Caique)
 	- || alterar a cor dos caracteres

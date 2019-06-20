@@ -12,10 +12,13 @@ TITLE SUPER@BROS - JOGO BASEADO EM ASSEMBLY
 
 
 INCLUDE Irvine32.inc		;
+INCLUDE Macros.inc			;
 INCLUDE keys.inc			;
+INCLUDE MACROS.inc			;
+INCLUDE sound.asm			;
 INCLUDE gameover.asm		;
 INCLUDE nivel1.asm			;
-INCLUDE Macros.inc			;
+INCLUDE nivel2.asm			;
 INCLUDE criaturas.asm		;
 
 ; other inclusions
@@ -24,9 +27,10 @@ INCLUDE criaturas.asm		;
 
 .CODE
 main PROC
+
+
 	CALL NIVEL1
-	
-	
+
 	QUIT::	
 EXIT
 main ENDP

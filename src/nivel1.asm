@@ -11,16 +11,17 @@ TITLE NIVEL 1, SUPER @ BROS
 	;coloquei dword pq ela sera atribuiba a um reg esi
 	PERSON DWORD 461
 	
-	ARR_CRIATURAS \
-	CRIATURA_DINAMICA <506, 1, 1>, <507, 1, 1>,<653, 1, 1>,<654, 1, 1>,<723, 1, 1>,<725, 1, 1>,<996, 1, 1>,<779, 1, 0>,<1276, 1 ,0>
-	
+	POS_INICIAL_TIMER WORD 321
+	CONTAGEM_PROGRESSIVA BYTE 0
+	COUNTER_CLOCK WORD 0
 	
 	CURR_DELAY DWORD 0
 	
-	PONTUACAO BYTE "123456789"
-	CURR_PT BYTE 0
+	ARR_CRIATURAS \
+	CRIATURA_DINAMICA <506, 1, 1>, <507, 1, 1>,<653, 1, 1>,<654, 1, 1>,<723, 1, 1>,<725, 1, 1>,<996, 1, 1>,<779, 1, 0>,<1276, 1 ,0>
 	
-	SUCESSO BYTE "PARABENS MEU CONSGRADO", 0AH
+	PONTUACAO BYTE "123456789"
+	CURR_PT BYTE 0	
 	
 
 	mapa1 \
@@ -28,9 +29,9 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE BLOCK,"   NIVEL 1                                      ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
-	BYTE BLOCK,"   PONTOS: 0000             TEMPO: 000          ", BLOCK, 0AH
+	BYTE BLOCK,"   PONTOS: 0000             TAREFA: 000         ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
-	BYTE BLOCK,"   TAREFA:                                      ", BLOCK, 0AH
+	BYTE BLOCK,"   TEMPO :    ",30 DUP(INDICADOR_TEMPO),"    ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE "##################################################", 0AH
 	BYTE "# @                                            OO#", 0AH
@@ -43,7 +44,7 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE "#     #      #      ############    #      #     #", 0AH
 	BYTE "#     #      #     +# $        # +  #      #     #", 0AH
 	BYTE "#     #      #      #    +     #    #      #     #", 0AH
-	BYTE "#     #      #      #######O   #    #      #     #", 0AH
+	BYTE "#    $#      #      #######O   #    #      #     #", 0AH
 	BYTE "#     #      #                      #      #     #", 0AH
 	BYTE "#     #      ########################      #     #", 0AH
 	BYTE "#     #                                    #     #", 0AH
@@ -52,6 +53,7 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE "#O                                      # +      #", 0AH
 	BYTE "#+                                               #", 0AH
 	BYTE "##################################################", 0AH
+
 
 .CODE
 
@@ -128,7 +130,7 @@ NIVEL1 PROC
 	
 	DOWN:	MOV ESI, PERSON
 			ADD ESI, COLUNAS
-			MOV AH, mapa1[ESI]
+			MOV  AH, mapa1[ESI]
 			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
@@ -193,15 +195,9 @@ NIVEL1 PROC
 	CHEGADA:	CMP AH, OBJETIVO
 				JNE INPUT ; o mesmo que fazer nada
 	
-				; PULA PARA PROXIMA FASE
-				CALL Clrscr
-				MOV EDX, OFFSET SUCESSO
-				CALL WriteString
+				CALL NIVEL2
 	
-				JMP QUIT
-	
-	
-	INPUT::		CALL PRINT_MAPA
+	INPUT::		IMPRIMI_MAPA mapa1
 	
 				; dinamica de movimenta das criaturas
 				CMP CURR_DELAY, DELAY_CRIATURA
@@ -209,32 +205,48 @@ NIVEL1 PROC
 	
 				; CURR_DELAY == DELAY_CRIATURA
 				MOV CURR_DELAY, 0	; zera a contagem
-				MOV ECX, LENGTHOF ARR_CRIATURAS
+				MOV ECX, 0    ;LENGTHOF ARR_CRIATURAS
 				MOV EDI, 0
-				JMP _CRIATURAS
 				
-				NEXT_INPUT:	INC CURR_DELAY
-							CALL ReadKey		; look for keyboard input			
-							JZ INPUT			; se ZF = 0, significa que nenhuma tecla foi pressionada
+				MOVIMENTA_CRIATURAS ARR_CRIATURAS, mapa1, INPUT;JMP _CRIATURAS
+				
+				NEXT_INPUT:
+				CMP COUNTER_CLOCK, CLOCK
+				JB OVER_TIMER
+				
+				TIMER mapa1, INPUT
+				
+				OVER_TIMER:
+				
+				INC CURR_DELAY
+				INC COUNTER_CLOCK
+				CALL ReadKey		; look for keyboard input			
+				JZ INPUT			; se ZF = 0, significa que nenhuma tecla foi pressionada
 	
 	; otherwise...
 	
-	MOV DL, PONTUACAO
-	
 	;KEY W
-	CMP AL, 'w'
+	CMP AL, _w
+	JE UP
+	CMP AL, W
 	JE UP
 	
 	;KEY D
-	CMP AL, 'd'
+	CMP AL, _d
+	JE RIGHT
+	CMP AL, D
 	JE RIGHT
 	
 	;KEY S
-	CMP AL, 's'
+	CMP AL, _s
+	JE DOWN
+	CMP AL, S
 	JE DOWN 
 	
 	;KEY A
-	CMP AL, 'a'
+	CMP AL, _a
+	JE LEFT
+	CMP AL, A
 	JE LEFT
 	
 	; nenhuma tecla valida foi pressionada!

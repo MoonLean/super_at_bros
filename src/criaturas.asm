@@ -1,34 +1,42 @@
 TITLE DINAMICA DAS CRIATURAS, SUPER @ BROS
-
-INCLUDE keys.inc
-
+TITLE CRIATURAS MODULO, SUPER @ BROS
 
 .CODE
+;
+;
+;
+;
+
+
 
 ;
-;	PROCEDIMENTO PARA IMPRIMIR MAPA
 ;
 ;
-PRINT_MAPA PROC
-
-	MOV DX, 00h
-	CALL Gotoxy
+;
+;
+COMMENT !
+TIMER::
+	MOV COUNTER_CLOCK, 0
+	CMP CONTAGEM_PROGRESSIVA, 30
+	JNE TIMER_NEXT
 	
-	MOV EDX, OFFSET mapa1
-	CALL WriteString
+	CALL GAMEOVER
 	
-	RET
-PRINT_MAPA ENDP
+	TIMER_NEXT:
+	INC CONTAGEM_PROGRESSIVA
+	
+	MOVZX ESI, POS_INICIAL_TIMER
+	MOV mapa1[ESI], SPACE
+	INC POS_INICIAL_TIMER
 
-;
-;
-;
-;
-;
+	JMP INPUT
+;END TIMER ROTINA
+
+
 _CRIATURAS_ PROC
 _CRIATURAS::
 	
-	; verifica se todas as criaturas verticais ja foram alteradas
+	; verifica se todas as criaturas ja foram alteradas
 	CMP ECX, 0
 	JE INPUT
 	
@@ -55,7 +63,7 @@ _CRIATURAS::
 	
 	EIXO_X:
 	;----------------------------
-	TEST ARR_CRIATURAS[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, DESCENDO
+	TEST ARR_CRIATURAS[EDI].DIR, 1		; se ZF = 1 significa que DIR == 0, e por isso, ESQUERDA
 	JZ VOLTANDO 				;
 	INC ESI						;
 	JMP OVER_VOLTANDO			;	 
@@ -129,3 +137,4 @@ WALL:
 ; END _CRIATURAS ROTINA
 
 _CRIATURAS_ ENDP
+!
