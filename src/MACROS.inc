@@ -42,23 +42,6 @@ TIMER MACRO mapa, retorno
 ENDM
 
 ;--------------------------------------------------------------;
-; NOME:   ALTERA_CREDITO                                       ;
-; FUNCAO: 													   ;
-; PARAMETROS: 												   ;
-;                                                              ;
-;--------------------------------------------------------------;
-ALTERA_CREDITO MACRO source, target
-	PUSH ECX
-	CLD
-	MOVZX ECX, QTD_CARACTERES_CREDITOS	
-	LEA ESI, source
-	LEA EDI, target
-	REP MOVSB
-	ADD PONTEIRO_CREDITO_ATUAL, QTD_CARACTERES_CREDITOS
-	POP ECX
-ENDM
-
-;--------------------------------------------------------------;
 ; NOME:   PlaySound                                            ;
 ; FUNCAO: 													   ;
 ; PARAMETROS: 												   ;

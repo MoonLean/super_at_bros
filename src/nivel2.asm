@@ -8,33 +8,31 @@ TITLE NIVEL 2, SUPER @ BROS
 .DATA
 	
 	CRIATURAS2 \
-	CRIATURA_DINAMICA <460, 1, 1>,
-	<506, 1, 1>,
-	<512, 1, 1>,
-	<552, 1, 1>,
-	<556, 1, 1>,
-	<564, 1, 1>,
-	<606, 1, 1>,
-	<656, 1, 1>,
-	<668, 1, 1>,
- 	<891, 1, 1>,
- 	<892, 1, 1>,
- 	<893, 1, 1>,
- 	<941, 1, 1>,
- 	<1072, 1, 1>,
- 	<1082, 1, 0>,
- 	<1124, 1, 1>,
- 	<1176, 1, 1>,
- 	<1186, 1, 1>,
- 	<1228, 1, 1>,	
-	<1281, 1, 1>,
-	<1283, 1, 1>,
-	<1285, 1, 1>,
-	<1333, 1, 1>,
- 	<1335, 1, 1>,
-	<1337, 1, 1>
-	
-	
+	CRIATURA_DINAMICA 	<460, 1, 1>,
+						<506, 1, 1>,
+						<512, 1, 1>,
+						<552, 1, 1>,
+						<556, 1, 1>,
+						<564, 1, 1>,
+						<606, 1, 1>,
+						<656, 1, 1>,
+						<668, 1, 1>,
+						<891, 1, 1>,
+						<892, 1, 1>,
+						<893, 1, 1>,
+						<941, 1, 1>,
+						<1072, 1, 1>,
+						<1082, 1, 0>,
+						<1124, 1, 1>,
+						<1176, 1, 1>,
+						<1186, 1, 1>,
+						<1228, 1, 1>,	
+						<1281, 1, 1>,
+						<1283, 1, 1>,
+						<1285, 1, 1>,
+						<1333, 1, 1>,
+						<1335, 1, 1>,
+						<1337, 1, 1>
 
 	mapa2 \
 	BYTE 9 DUP(BLOCK,SPACE), "SUPER @ BROS ",9 DUP(BLOCK,SPACE), BLOCK,0AH
@@ -268,35 +266,3 @@ INPUT_NIVEL_2::	IMPRIMI_MAPA mapa2
 	; nenhuma tecla valida foi pressionada!
 	JMP INPUT
 NIVEL2 ENDP
-
-; POSSIVEL LIXO
-COMMENT !
-PROSSIGA_NIVEL2:	INC ONCE
-						MOV PERSON, 889
-	
-						MOV ECX, 1377  ; 1428 ; 28 linhas x 51 colunas
-						MOV ESI, 0
-						
-					REPLACE_MAPA:
-						MOV AH, mapa2[ESI]
-						MOV mapa1[ESI], AH
-						INC ESI
-					LOOP REPLACE_MAPA
-						;MOV mapa1, OFFSET mapa2
-						
-						MOV ECX, LENGTHOF ARR_CRIATURAS2
-						MOV EDI, 0
-						
-					REPLACE_CRIATURAS:
-						MOV EBX, ARR_CRIATURAS2[EDI].POS
-						MOV ARR_CRIATURAS[EDI].POS, EBX
-						
-						MOV BL, ARR_CRIATURAS2[EDI].DIR
-						MOV ARR_CRIATURAS[EDI].DIR, BL
-						
-						MOV BL, ARR_CRIATURAS2[EDI].SENTIDO
-						MOV ARR_CRIATURAS[EDI].SENTIDO, BL
-						
-						ADD EDI, TYPE CRIATURA_DINAMICA
-					LOOP REPLACE_CRIATURAS
-!

@@ -19,7 +19,7 @@ INCLUDE sound.asm			;
 INCLUDE gameover.asm		;
 INCLUDE nivel1.asm			;
 INCLUDE nivel2.asm			;
-INCLUDE criaturas.asm		;
+
 
 ; other inclusions
 
