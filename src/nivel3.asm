@@ -1,92 +1,100 @@
-TITLE NIVEL 1, SUPER @ BROS
+TITLE NIVEL 3, SUPER @ BROS
 
-; Module Description:			cada nível tem uma dinamica diferente, dai a necessidade de
-;								separar cada nível por modulo, este contem o nivel 1
-;
+; Program Description:
 ; Author:
 ; Creation Date:
+; other inclusions
 
 .DATA
-	;coordenada inicial do personagem
-	;coloquei dword pq ela sera atribuiba a um reg esi
-	PERSON DWORD 461
 	
-	POS_INICIAL_TIMER WORD 321
-	CONTAGEM_PROGRESSIVA BYTE 0
-	COUNTER_CLOCK WORD 0
+	CRIATURAS3 \
+	CRIATURA_DINAMICA <460, 1, 1>,
+	<506, 1, 1>,
+	<512, 1, 1>,
+	<552, 1, 1>,
+	<556, 1, 1>,
+	<564, 1, 1>,
+	<606, 1, 1>,
+	<656, 1, 1>,
+	<668, 1, 1>,
+ 	<891, 1, 1>,
+ 	<892, 1, 1>,
+ 	<893, 1, 1>,
+ 	<941, 1, 1>,
+ 	<1072, 1, 1>,
+ 	<1082, 1, 0>,
+ 	<1124, 1, 1>,
+ 	<1176, 1, 1>,
+ 	<1186, 1, 1>,
+ 	<1228, 1, 1>,	
+	<1281, 1, 1>,
+	<1283, 1, 1>,
+	<1285, 1, 1>,
+	<1333, 1, 1>,
+ 	<1335, 1, 1>,
+	<1337, 1, 1>
 	
-	CURR_DELAY DWORD 0
-	
-	ARR_CRIATURAS \
-	CRIATURA_DINAMICA 	<506, 1, 1>,
-						<507, 1, 1>,
-						<653, 1, 1>,
-						<654, 1, 1>,
-						<723, 1, 1>,
-						<725, 1, 1>,
-						<996, 1, 1>,
-						<779, 1, 0>,
-						<1276, 1 ,0>
-	
-	PONTUACAO BYTE "123456789"
-	CURR_PT BYTE 0	
 	
 
-	mapa1 \
+	mapa2 \
 	BYTE 9 DUP(BLOCK,SPACE), "SUPER @ BROS ",9 DUP(BLOCK,SPACE), BLOCK,0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
-	BYTE BLOCK,"   NIVEL 1                                      ", BLOCK, 0AH
+	BYTE BLOCK,"   NIVEL 3                                      ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
-	BYTE BLOCK,"   PONTOS: 0000             TAREFA: 000         ", BLOCK, 0AH
+	BYTE BLOCK,"   PONTOS: 0000             TAREFA: ___         ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE BLOCK,"   TEMPO :    ",30 DUP(INDICADOR_TEMPO),"    ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE "##################################################", 0AH
-	BYTE "# @                                            OO#", 0AH
+	BYTE "#                               X          |   $ #", 0AH
+	BYTE "#   O#############################################", 0AH
+	BYTE "#    #OC  +                                #   @ #", 0AH
+	BYTE "#    #  #################################  #     #", 0AH
+	BYTE "#    # O#    +++                        #  #     #", 0AH
+	BYTE "#    #  #   #########################   #  #     #", 0AH
+	BYTE "#    #  #   #                       #   #  #     #", 0AH
+	BYTE "#    #  #   #   ##################  #   #  #     #", 0AH
+	BYTE "#    #  #   #   # $  #  O        #  #   #  #     #", 0AH
+	BYTE "#    #  #   #   #             #     #   #  #     #", 0AH
+	BYTE "#    #  #   #   #####################   #  #     #", 0AH
+	BYTE "#    #  #   #                           #  #     #", 0AH
+	BYTE "#    #  #   #############################O #     #", 0AH
+	BYTE "#    #  #                                  #     #", 0AH
+	BYTE "#       ################################   #     #", 0AH
+	BYTE "#                                          #     #", 0AH
+	BYTE "#  O #######################################     #", 0AH
 	BYTE "#                                                #", 0AH
-	BYTE "#     ######################################+    #", 0AH
-	BYTE "#     #                                  OO#     #", 0AH
-	BYTE "#     #                                    #     #", 0AH
-	BYTE "#     #  O+O #      #################      #     #", 0AH
-	BYTE "#     #      #O                     #      #     #", 0AH
-	BYTE "#     #      #      ############    #      #     #", 0AH
-	BYTE "#     #      #     +# $        # +  #      #     #", 0AH
-	BYTE "#     #      #      #    +     #    #      #     #", 0AH
-	BYTE "#    $#      #      #######O   #    #      #     #", 0AH
-	BYTE "#     #      #                      #      #     #", 0AH
-	BYTE "#     #      ########################      #     #", 0AH
-	BYTE "#     #                                    #     #", 0AH
-	BYTE "#     #+                                   #     #", 0AH
-	BYTE "#     ###############################      #     #", 0AH
-	BYTE "#O                                      # +      #", 0AH
-	BYTE "#+                                               #", 0AH
 	BYTE "##################################################", 0AH
-
-
+	
+	
 .CODE
 
+;--------------------------------------------------------------;
+; NOME:                                                        ;
+; FUNCAO:                                                      ;
+; PARAMETROS:                                                  ;
+;                                                              ;
+;--------------------------------------------------------------;
+NIVEL2 PROC
+	; ALGUMAS VARIAVEIS DO NIVEL 1 QUE POSEM SER REAPROVEITADAS
+	; DEVEM SER ZERADAS AQUI
+	; ...
+	MOV CONTAGEM_PROGRESSIVA, 0
+	MOV PERSON, 465
+	MOV POS_INICIAL_TIMER, 321
 
-; procedimento:			NIVEL1
-; funcao:				
-; entrada:				
-; saida:				
-; parametros:			
-NIVEL1 PROC
-	
-	; rotina com a leitura do teclado
-	JMP INPUT
-	
+	JMP INPUT_NIVEL_2
 	
 	UP:		MOV ESI, PERSON
 			SUB ESI, COLUNAS
-			MOV AH, mapa1[ESI]
+			MOV AH, mapa2[ESI]
 			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_U
 				MOVZX EDI, CURR_PT
 				MOV DL, PONTUACAO[EDI]
-				MOV mapa1[218], DL
+				MOV mapa2[218], DL
 				INC CURR_PT
 			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
@@ -98,25 +106,25 @@ NIVEL1 PROC
 			; otherwise
 	
 			; posiciona personagem
-			MOV mapa1[ESI], PERSONAGEM
+			MOV mapa2[ESI], PERSONAGEM
 			; atualiza posicao
 			MOV PERSON, ESI
 	
 			ADD ESI, COLUNAS
-			MOV mapa1[ESI], SPACE	
+			MOV mapa2[ESI], SPACE	
 		
-			JMP INPUT
+			JMP INPUT_NIVEL_2
 	
 	RIGHT:	MOV ESI, PERSON
 			INC ESI
-			MOV AH, mapa1[ESI]
+			MOV AH, mapa2[ESI]
 			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_R
 				MOVZX EDI, CURR_PT
 				MOV DL, PONTUACAO[EDI]
-				MOV mapa1[218], DL
+				MOV mapa2[218], DL
 				INC CURR_PT
 			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
@@ -127,25 +135,25 @@ NIVEL1 PROC
 			; otherwise
 	
 			; posiciona personagem
-			MOV mapa1[ESI], PERSONAGEM
+			MOV mapa2[ESI], PERSONAGEM
 			; atualiza posicao
 			MOV PERSON, ESI
 	
 			DEC ESI
-			MOV mapa1[ESI], SPACE
+			MOV mapa2[ESI], SPACE
 	
-			JMP INPUT	
+			JMP INPUT_NIVEL_2	
 	
 	DOWN:	MOV ESI, PERSON
 			ADD ESI, COLUNAS
-			MOV  AH, mapa1[ESI]
+			MOV  AH, mapa2[ESI]
 			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_D
 				MOVZX EDI, CURR_PT
 				MOV DL, PONTUACAO[EDI]
-				MOV mapa1[218], DL
+				MOV mapa2[218], DL
 				INC CURR_PT
 			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
@@ -156,25 +164,25 @@ NIVEL1 PROC
 			; otherwise
 	
 			; posiciona personagem
-			MOV mapa1[ESI], PERSONAGEM
+			MOV mapa2[ESI], PERSONAGEM
 			; atualiza posicao
 			MOV PERSON, ESI
 	
 			SUB ESI, COLUNAS
-			MOV mapa1[ESI], SPACE
+			MOV mapa2[ESI], SPACE
 
-			JMP INPUT	
+			JMP INPUT_NIVEL_2	
 	
 	LEFT:	MOV ESI, PERSON
 			DEC ESI
-			MOV AH, mapa1[ESI]
+			MOV AH, mapa2[ESI]
 				
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_L
 				MOVZX EDI, CURR_PT
 				MOV DL, PONTUACAO[EDI]
-				MOV mapa1[218], DL
+				MOV mapa2[218], DL
 				INC CURR_PT
 			;ADD PONTUACAO, BONIFICACAO			
 			MOV AH, SPACE
@@ -185,14 +193,14 @@ NIVEL1 PROC
 			; otherwise
 	
 			; posiciona personagem
-			MOV mapa1[ESI], PERSONAGEM
+			MOV mapa2[ESI], PERSONAGEM
 			; atualiza posicao
 			MOV PERSON, ESI
 	
 			INC ESI
-			MOV mapa1[ESI], SPACE
+			MOV mapa2[ESI], SPACE
 	
-			JMP INPUT
+			JMP INPUT_NIVEL_2
 
 	CREATURE:	CMP AH, CRIATURA
 				JNE CHEGADA
@@ -201,11 +209,11 @@ NIVEL1 PROC
 
 
 	CHEGADA:	CMP AH, OBJETIVO
-				JNE INPUT ; o mesmo que fazer nada
+				JNE INPUT_NIVEL_2 ; o mesmo que fazer nada
 	
-				CALL NIVEL2
-	
-	INPUT::		IMPRIMI_MAPA mapa1
+				;CALL NIVEL3
+
+INPUT_NIVEL_2::	IMPRIMI_MAPA mapa2
 	
 				; dinamica de movimenta das criaturas
 				CMP CURR_DELAY, DELAY_CRIATURA
@@ -216,20 +224,20 @@ NIVEL1 PROC
 				MOV ECX, 0    ;LENGTHOF ARR_CRIATURAS
 				MOV EDI, 0
 				
-				MOVIMENTA_CRIATURAS ARR_CRIATURAS, mapa1, INPUT;JMP _CRIATURAS
+				MOVIMENTA_CRIATURAS CRIATURAS2, mapa2, INPUT_NIVEL_2
 				
 				NEXT_INPUT:
 				CMP COUNTER_CLOCK, CLOCK
 				JB OVER_TIMER
 				
-				TIMER mapa1, INPUT
+				TIMER mapa2, INPUT_NIVEL_2
 				
 				OVER_TIMER:
 				
 				INC CURR_DELAY
 				INC COUNTER_CLOCK
 				CALL ReadKey		; look for keyboard input			
-				JZ INPUT			; se ZF = 0, significa que nenhuma tecla foi pressionada
+				JZ INPUT_NIVEL_2			; se ZF = 0, significa que nenhuma tecla foi pressionada
 	
 	; otherwise...
 	
@@ -259,7 +267,4 @@ NIVEL1 PROC
 	
 	; nenhuma tecla valida foi pressionada!
 	JMP INPUT
-
-NIVEL1 ENDP
-
-
+NIVEL2 ENDP
