@@ -307,16 +307,22 @@ ABOUT 2.8s per frame
 ---------------------------------------------------------------------------------
                                     Co-Producer                                  
                                    CAIQUE ANTONIO                                
-
-	BYTE "                                 Executive Producer                             ", 0AH
-	BYTE "                                    LARRY DAIVD                                 ", 0AH
-	BYTE "                                 Executive Producer                             ", 0AH
-	BYTE "                                    JEFF GARLIN                                 ", 0AH
-	BYTE "                                 Executive Producer                             ", 0AH
-	BYTE "                                   GAVING POLONE                                ", 0AH
-	BYTE "                               Co-Executive Producer                            ", 0AH
-	BYTE "                                  ROBERT B. WEIDE                               ", 0AH
-	BYTE "                                    Produced by                                 ", 0AH
-	BYTE "                                    TIM GIBBONS                                 ", 0AH
-	BYTE "                                    Co-Producer                                 ", 0AH
-	BYTE "                                   CAIQUE ANTONIO                               ", 0AH
+---------------------------------------------------------------------------------
+                                                                                 
+                                                                                 
+                                  F I M  D E J O G O                             
+                                                                                 
+               > NIVEL MAXIMO:       3 / 3                                       
+                                                                                 
+               > PONTUACAO TOTAL:    1234                                        
+                                                                                 
+               > TEMPO TOTAL:        XXX s                                       
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                pressione qualquer tecla p/ sair 
