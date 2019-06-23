@@ -6,33 +6,34 @@ TITLE NIVEL 2, SUPER @ BROS
 ; other inclusions
 
 .DATA
+	GATE_2 WORD 728,729,730,731,732,733
+	
+	TASK BYTE 0
 	
 	CRIATURAS2 \
 	CRIATURA_DINAMICA 	<460, 1, 1>,
-						<506, 1, 1>,
-						<512, 1, 1>,
-						<552, 1, 1>,
-						<556, 1, 1>,
-						<564, 1, 1>,
-						<606, 1, 1>,
-						<656, 1, 1>,
-						<668, 1, 1>,
-						<891, 1, 1>,
-						<892, 1, 1>,
-						<893, 1, 1>,
-						<941, 1, 1>,
-						<1072, 1, 1>,
-						<1082, 1, 0>,
-						<1124, 1, 1>,
-						<1176, 1, 1>,
-						<1186, 1, 1>,
-						<1228, 1, 1>,	
-						<1281, 1, 1>,
-						<1283, 1, 1>,
-						<1285, 1, 1>,
-						<1333, 1, 1>,
-						<1335, 1, 1>,
-						<1337, 1, 1>
+	<512, 1, 1>,
+	<556, 1, 1>,
+	<564, 1, 1>,
+	<606, 1, 1>,
+	<656, 1, 1>,
+	<668, 1, 1>,
+	<891, 1, 1>,
+	<892, 1, 1>,
+	<893, 1, 1>,
+	<941, 1, 1>,
+	<1072, 1, 1>,
+	<1082, 1, 0>,
+	<1124, 1, 1>,
+	<1176, 1, 1>,
+	<1186, 1, 1>,
+	<1228, 1, 1>,	
+	<1281, 1, 1>,
+	<1283, 1, 1>,
+	<1285, 1, 1>,
+	<1333, 1, 1>,
+	<1335, 1, 1>,
+	<1337, 1, 1>
 
 	mapa2 \
 	BYTE 9 DUP(BLOCK,SPACE), "SUPER @ BROS ",9 DUP(BLOCK,SPACE), BLOCK,0AH
@@ -44,8 +45,8 @@ TITLE NIVEL 2, SUPER @ BROS
 	BYTE BLOCK,"   TEMPO :    ",30 DUP(INDICADOR_TEMPO),"    ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE "##################################################", 0AH
-	BYTE "#O    @                                        O #", 0AH
-	BYTE "# O                                       OX  O  #", 0AH
+	BYTE "#O    @            S           +                 #", 0AH
+	BYTE "# O                   C                    X  O  #", 0AH
 	BYTE "#  O  ###################################### O   #", 0AH
 	BYTE "#     #                                    #O    #", 0AH
 	BYTE "#    O#                                    #     #", 0AH
@@ -57,7 +58,7 @@ TITLE NIVEL 2, SUPER @ BROS
 	BYTE "#    +#      #            ++++      #      #     #", 0AH
 	BYTE "#    +#      #            ++++     $#      #     #", 0AH
 	BYTE "#O   +#    O ########################      #     #", 0AH ;21
-	BYTE "# O  +#                                    #     #", 0AH
+	BYTE "# O  +#                               $    #     #", 0AH
 	BYTE "#  O +#   C  O                             #     #", 0AH
 	BYTE "#   OS###############################      #     #", 0AH
 	BYTE "#     O O O                                      #", 0AH
@@ -80,12 +81,40 @@ NIVEL2 PROC
 	MOV CONTAGEM_PROGRESSIVA, 0
 	MOV PERSON, 465
 	MOV POS_INICIAL_TIMER, 321
+	MOV CURR_PT, 0
 
 	JMP INPUT_NIVEL_2
 	
 	UP:		MOV ESI, PERSON
 			SUB ESI, COLUNAS
 			MOV AH, mapa2[ESI]
+			
+			; verifica se a missao foi cumprida
+			;----------------------------------------
+			CMP AH, 'X'
+			JNE _CU
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[241], 'X'
+			_CU:
+			CMP AH, 'C'
+			JNE SU_
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[242], 'C'
+			SU_:
+			CMP AH, 'S'
+			JNE CMPMISSAOU
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[243], 'S'
+			CMPMISSAOU:
+			CMP TASK, 3
+			JNE NAO_CUMPRIDAU
+				REMOVE_PORTAO GATE_2, mapa2
+			NAO_CUMPRIDAU:
+			;----------------------------------------
+
 			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
@@ -94,7 +123,9 @@ NIVEL2 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa2[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_U:
 	
@@ -117,14 +148,42 @@ NIVEL2 PROC
 			INC ESI
 			MOV AH, mapa2[ESI]
 			
+			; verifica se a missao foi cumprida
+			;----------------------------------------
+			CMP AH, 'X'
+			JNE _CR
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[241], 'X'
+			_CR:
+			CMP AH, 'C'
+			JNE SR_
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[242], 'C'
+			SR_:
+			CMP AH, 'S'
+			JNE CMPMISSAOR
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[243], 'S'
+			CMPMISSAOR:
+			CMP TASK, 3
+			JNE NAO_CUMPRIDAR
+				REMOVE_PORTAO GATE_2, mapa2
+			NAO_CUMPRIDAR:
+			;----------------------------------------
+			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
-			JNE OVER_BONUS_R
+			JNE OVER_BONUS_R			
 				MOVZX EDI, CURR_PT
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa2[218], DL
-				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				INC CURR_PT				
+				
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_R:
 	
@@ -146,6 +205,32 @@ NIVEL2 PROC
 			ADD ESI, COLUNAS
 			MOV  AH, mapa2[ESI]
 			
+			; verifica se a missao foi cumprida
+			;----------------------------------------
+			CMP AH, 'X'
+			JNE _CD
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[241], 'X'
+			_CD:
+			CMP AH, 'C'
+			JNE SD_
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[242], 'C'
+			SD_:
+			CMP AH, 'S'
+			JNE CMPMISSAOD
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[243], 'S'
+			CMPMISSAOD:
+			CMP TASK, 3
+			JNE NAO_CUMPRIDAD
+				REMOVE_PORTAO GATE_2, mapa2
+			NAO_CUMPRIDAD:
+			;----------------------------------------
+			
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
 			JNE OVER_BONUS_D
@@ -153,7 +238,9 @@ NIVEL2 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa2[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_D:
 	
@@ -174,6 +261,32 @@ NIVEL2 PROC
 	LEFT:	MOV ESI, PERSON
 			DEC ESI
 			MOV AH, mapa2[ESI]
+			
+			; verifica se a missao foi cumprida
+			;----------------------------------------
+			CMP AH, 'X'
+			JNE _CL
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[241], 'X'
+			_CL:
+			CMP AH, 'C'
+			JNE SL_
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[242], 'C'
+			SL_:
+			CMP AH, 'S'
+			JNE CMPMISSAO
+				INC TASK
+				MOV AH, SPACE
+				MOV mapa2[243], 'S'
+			CMPMISSAO:
+			CMP TASK, 3
+			JNE NAO_CUMPRIDAL
+				REMOVE_PORTAO GATE_2, mapa2
+			NAO_CUMPRIDAL:
+			;----------------------------------------
 				
 			; caso seja um bonus, apenas soma pontuacao 
 			CMP AH, BONUS			
@@ -182,7 +295,9 @@ NIVEL2 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa2[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_L:
 	
@@ -207,9 +322,15 @@ NIVEL2 PROC
 
 
 	CHEGADA:	CMP AH, OBJETIVO
-				JNE INPUT_NIVEL_2 ; o mesmo que fazer nada
+				JNE INPUT_NIVEL_2
+				INC NIVEIS_CONCLUIDOS
+				CALL NIVEL3
+							
+
+	 
 	
-				;CALL NIVEL3
+	
+				
 
 INPUT_NIVEL_2::	IMPRIMI_MAPA mapa2
 	

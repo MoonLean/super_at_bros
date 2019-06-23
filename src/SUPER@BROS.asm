@@ -16,10 +16,11 @@ INCLUDE Macros.inc			;
 INCLUDE keys.inc			;
 INCLUDE MACROS.inc			;
 INCLUDE sound.asm			;
+INCLUDE variaveis.asm		;
 INCLUDE gameover.asm		;
 INCLUDE nivel1.asm			;
 INCLUDE nivel2.asm			;
-
+INCLUDE nivel3.asm
 
 ; other inclusions
 

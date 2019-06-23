@@ -9,11 +9,6 @@ TITLE NIVEL 1, SUPER @ BROS
 .DATA
 	;coordenada inicial do personagem
 	;coloquei dword pq ela sera atribuiba a um reg esi
-	PERSON DWORD 461
-	
-	POS_INICIAL_TIMER WORD 321
-	CONTAGEM_PROGRESSIVA BYTE 0
-	COUNTER_CLOCK WORD 0
 	
 	CURR_DELAY DWORD 0
 	
@@ -28,7 +23,6 @@ TITLE NIVEL 1, SUPER @ BROS
 						<779, 1, 0>,
 						<1276, 1 ,0>
 	
-	PONTUACAO BYTE "123456789"
 	CURR_PT BYTE 0	
 	
 
@@ -37,7 +31,7 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE BLOCK,"   NIVEL 1                                      ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
-	BYTE BLOCK,"   PONTOS: 0000             TAREFA: 000         ", BLOCK, 0AH
+	BYTE BLOCK,"   PONTOS: 0000                                 ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE BLOCK,"   TEMPO :    ",30 DUP(INDICADOR_TEMPO),"    ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
@@ -61,6 +55,7 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE "#O                                      # +      #", 0AH
 	BYTE "#+                                               #", 0AH
 	BYTE "##################################################", 0AH
+	BYTE "                                                  ", 0AH
 
 
 .CODE
@@ -88,7 +83,8 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_U:
 	
@@ -118,7 +114,8 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_R:
 	
@@ -147,7 +144,8 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL	
 			MOV AH, SPACE
 			OVER_BONUS_D:
 	
@@ -176,7 +174,9 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-			;ADD PONTUACAO, BONIFICACAO			
+				
+				MOV DL, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DL		
 			MOV AH, SPACE
 			OVER_BONUS_L:
 	
@@ -196,7 +196,7 @@ NIVEL1 PROC
 
 	CREATURE:	CMP AH, CRIATURA
 				JNE CHEGADA
-				
+				INC NIVEIS_CONCLUIDOS
 				CALL GAMEOVER
 
 

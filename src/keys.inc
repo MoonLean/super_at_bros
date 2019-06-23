@@ -6,8 +6,7 @@
 ;--------------------------------------------------------------;
 
 
-SPACE				= 20h 		; espaço
-MISSAO				= "XCS"		
+SPACE				= 20h 		; espaço	
 BLOCK				= 0FEh
 INDICADOR_TEMPO		= 0DBh
 CLOCK				= 300
@@ -18,7 +17,7 @@ CRIATURA			= 4Fh		; O
 LINHAS				= 20d
 COLUNAS				= 51d
 BONUS 				= 2Bh		; +
-BONIFICACAO			= 25d		; cada simbolo bonus vale 25pts
+BONIFICACAO			= 10d		; cada simbolo bonus vale 10pts
 _w					= 77h		;'w'
 _d					= 64h		;'d'
 _s					= 73h 		;'s'
@@ -43,7 +42,7 @@ DELAY_CRIATURA		= 50		; a cada n prints de tela a posicao da criatura eh atualiz
 ;--------------------------------------------------------------;
 CRIATURA_DINAMICA STRUCT
 	POS DWORD ?
-	DIR BYTE ?			; 0 (ESQUEDA OU DESCE); 1 (DIREITA OU SOBE)
+	DIR BYTE ?			; 0 (<- OU DESCE); 1 (-> OU SOBE)
 	SENTIDO BYTE ?		; 0 = eixo x; 1 = eixo y
 CRIATURA_DINAMICA ENDS
 
