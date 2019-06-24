@@ -39,7 +39,7 @@ TITLE GAME OVER MODULO, SUPER @ BROS
 	BYTE "                                    Produced by                                 ", 0AH
 	BYTE "                                    TIM GIBBONS                                 ", 0AH
 	BYTE "                                    Co-Producer                                 ", 0AH
-	BYTE "                                   CAIQUE ANTONIO                               ", 0AH
+	BYTE "                                   CAIQUE ANTONIO                               ", 0AH,0
 	
 	GAME_OVER_MSG \
 	BYTE "                                                                                ", 0AH
@@ -99,7 +99,7 @@ TITLE GAME OVER MODULO, SUPER @ BROS
 	BYTE "                                                                                ", 0AH
 	BYTE "                                                                                ", 0AH
 	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
+	BYTE "                                                                                ", 0AH,0
 
 .CODE
 

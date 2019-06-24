@@ -31,7 +31,7 @@ TITLE INFORMACOES MODULO, SUPER @ BROS
 	BYTE "                                                                                 ", 0AH
 	BYTE "                                                                                 ", 0AH
 	BYTE "                                                                                 ", 0AH
-	BYTE "                pressione qualquer tecla p/ sair", 0AH
+	BYTE "                pressione qualquer tecla p/ sair", 0AH, 0
 
 
 .CODE
@@ -54,7 +54,7 @@ INFO PROC
 	MOV EDX, OFFSET info_msg_nivel
 	CALL WriteString
 	
-	MOV AL, NIVEIS_CONCLUIDOS
+	MOVZX EAX, NIVEIS_CONCLUIDOS
 	CALL WriteDec
 	
 	MOV EDX, OFFSET info_msg_pontuacao

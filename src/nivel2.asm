@@ -63,7 +63,7 @@ TITLE NIVEL 2, SUPER @ BROS
 	BYTE "#   OS###############################      #     #", 0AH
 	BYTE "#     O O O                                      #", 0AH
 	BYTE "#      O O O                                     #", 0AH
-	BYTE "##################################################", 0AH
+	BYTE "##################################################", 0AH, 0
 	
 	
 .CODE
@@ -124,8 +124,8 @@ NIVEL2 PROC
 				MOV mapa2[218], DL
 				INC CURR_PT
 				
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX	
 			MOV AH, SPACE
 			OVER_BONUS_U:
 	
@@ -182,8 +182,8 @@ NIVEL2 PROC
 				MOV mapa2[218], DL
 				INC CURR_PT				
 				
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX	
 			MOV AH, SPACE
 			OVER_BONUS_R:
 	
@@ -239,8 +239,8 @@ NIVEL2 PROC
 				MOV mapa2[218], DL
 				INC CURR_PT
 				
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX
 			MOV AH, SPACE
 			OVER_BONUS_D:
 	
@@ -296,8 +296,8 @@ NIVEL2 PROC
 				MOV mapa2[218], DL
 				INC CURR_PT
 				
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX	
 			MOV AH, SPACE
 			OVER_BONUS_L:
 	

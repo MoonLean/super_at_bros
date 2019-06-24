@@ -54,8 +54,7 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE "#     ###############################      #     #", 0AH
 	BYTE "#O                                      # +      #", 0AH
 	BYTE "#+                                               #", 0AH
-	BYTE "##################################################", 0AH
-	BYTE "                                                  ", 0AH
+	BYTE "##################################################", 0AH, 0
 
 
 .CODE
@@ -83,8 +82,8 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX
 			MOV AH, SPACE
 			OVER_BONUS_U:
 	
@@ -114,8 +113,8 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX
 			MOV AH, SPACE
 			OVER_BONUS_R:
 	
@@ -144,8 +143,8 @@ NIVEL1 PROC
 				MOV DL, PONTUACAO[EDI]
 				MOV mapa1[218], DL
 				INC CURR_PT
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL	
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL,DX	
 			MOV AH, SPACE
 			OVER_BONUS_D:
 	
@@ -175,8 +174,8 @@ NIVEL1 PROC
 				MOV mapa1[218], DL
 				INC CURR_PT
 				
-				MOV DL, BONIFICACAO
-				ADD PONTUACAO_TOTAL, DL		
+				MOV DX, BONIFICACAO
+				ADD PONTUACAO_TOTAL, DX		
 			MOV AH, SPACE
 			OVER_BONUS_L:
 	
@@ -202,7 +201,7 @@ NIVEL1 PROC
 
 	CHEGADA:	CMP AH, OBJETIVO
 				JNE INPUT ; o mesmo que fazer nada
-	
+				INC NIVEIS_CONCLUIDOS
 				CALL NIVEL2
 	
 	INPUT::		IMPRIMI_MAPA mapa1
