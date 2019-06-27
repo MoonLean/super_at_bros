@@ -26,6 +26,7 @@ ENDM
 ;--------------------------------------------------------------;
 TIMER MACRO mapa, retorno
 	MOV COUNTER_CLOCK, 0
+	INC TEMPO_TOTAL
 	CMP CONTAGEM_PROGRESSIVA, 30
 	JNE TIMER_NEXT
 	
