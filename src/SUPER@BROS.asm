@@ -6,7 +6,7 @@ TITLE SUPER@BROS - JOGO BASEADO EM ASSEMBLY
 ;							da Universidade Federal de Sao Carlos, curso: Engenharia de Computacao
 ;
 ; Authors:					Luan V. Moraes	-	744342
-;							Antonio Caique	-	744332
+;							Antonio Caique	-	744334
 ;
 ; Creation Date:			28 de Maio de 2019
 
