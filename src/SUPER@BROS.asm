@@ -19,10 +19,11 @@ INCLUDE sound.asm			;
 INCLUDE variaveis.asm		;
 INCLUDE info.asm			;
 INCLUDE gameover.asm		;
-INCLUDE menu.asm
+INCLUDE menu.asm			;
+INCLUDE comojogar.asm		;
 INCLUDE nivel1.asm			;
 INCLUDE nivel2.asm			;
-INCLUDE nivel3.asm
+INCLUDE nivel3.asm			;
 
 ; other inclusions
 

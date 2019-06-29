@@ -125,7 +125,9 @@ MENU_INICIAL PROC
 			CALL PRINT_MENU
 			
 	INP:
-		CALL ReadKey
+		MOV EAX, 20
+		CALL Delay
+		CALL ReadKey		
 		JZ INP
 	
 	CMP AL, _w
@@ -136,7 +138,7 @@ MENU_INICIAL PROC
 	CMP AL, _s
 	JE DOWN
 	CMP AL, S
-	JE UP
+	JE DOWN
 	
 	CMP AL, 0Dh	; "enter"
 	JNE INP
@@ -147,6 +149,7 @@ MENU_INICIAL PROC
 		MOV EAX, white+(black*16)
 		CALL SETTEXTCOLOR
 		CALL NIVEL1
+		
 				; COMO JOGAR
 	COMO_JOGAR:
 	CMP opt, 1
