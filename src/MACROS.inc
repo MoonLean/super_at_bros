@@ -101,6 +101,19 @@ PlaySound PROTO,
         pszSound:PTR BYTE, 
         hmod:DWORD, 
         fdwSound:DWORD
+		
+
+;--------------------------------------------------------------;
+; NOME:   IMPRIMI_MAPA                                         ;
+; FUNCAO: move o cursor para o inicio da tela e imprime o mapa ;
+; PARAMETROS: mapa                                             ;
+;                                                              ;
+;--------------------------------------------------------------;
+GOLINE MACRO N
+	MOV DX, 0
+	MOV DH, N
+	CALL Gotoxy
+ENDM
 
 ;--------------------------------------------------------------;
 ; NOME:   MOVIMENTA_CRIATURAS                                  ;

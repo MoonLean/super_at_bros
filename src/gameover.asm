@@ -41,35 +41,6 @@ TITLE GAME OVER MODULO, SUPER @ BROS
 	BYTE "                                    Co-Producer                                 ", 0AH
 	BYTE "                                   CAIQUE ANTONIO                               ", 0AH,0
 	
-	GAME_OVER_MSG \
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "   ___       _       __  __     ___        ___     __   __    ___     ___     _ ", 0AH
-	BYTE "  / __|     /_\     |  \/  |   | __|      / _ \    \ \ / /   | __|   | _ \   | |", 0AH
-	BYTE " | (_ |    / _ \    | |\/| |   | _|      | (_) |    \ V /    | _|    |   /   |_|", 0AH
-	BYTE "  \___|   /_/ \_\   |_|  |_|   |___|      \___/      \_/     |___|   |_|_\   (_)", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "     ________                                                                   ", 0AH
-	BYTE "    /   ...  \                                                                  ", 0AH
-	BYTE "   /.. .... ..\                                                                 ", 0AH
-	BYTE "  /..   ..  ...\                                                                ", 0AH
-	BYTE "  \.  ______  ./                                                                ", 0AH
-	BYTE "   \_/  _ _ \_/                                                                 ", 0AH
-	BYTE "     \__!_!_/                                                                   ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0AH
-	BYTE "                                                                                ", 0
 	
 	GAME_OVER_CREDIT_MSG \
 	BYTE "                                                                                ", 0AH

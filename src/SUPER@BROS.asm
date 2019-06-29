@@ -19,6 +19,7 @@ INCLUDE sound.asm			;
 INCLUDE variaveis.asm		;
 INCLUDE info.asm			;
 INCLUDE gameover.asm		;
+INCLUDE menu.asm
 INCLUDE nivel1.asm			;
 INCLUDE nivel2.asm			;
 INCLUDE nivel3.asm
@@ -30,8 +31,7 @@ INCLUDE nivel3.asm
 .CODE
 main PROC
 
-
-	CALL NIVEL1
+	CALL MENU_INICIAL
 
 	QUIT::	
 EXIT
