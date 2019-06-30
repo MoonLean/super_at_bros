@@ -26,7 +26,7 @@ mapa 1:
 ; O- indica criatura movendo-se na horizontal
 ; O  indica criatura movendo-se na vertical
 
-■ ■ ■ ■ ■ ■ ■ ■ ■ SUPER @ BROS ■ ■ ■ ■ ■ ■ ■ ■ ■ ■                         
+■ ■ ■ ■ ■ ■ ■ ■ ■ SUPER @ BROS ■ ■ ■ ■ ■ ■ ■ ■ ■ ■
 ■                                                ■
 ■   NIVEL 1                                      ■
 ■                                                ■
@@ -325,4 +325,50 @@ ABOUT 2.8s per frame
                                                                                  
                                                                                  
                                                                                  
-                                                pressione qualquer tecla p/ sair 
+               pressione qualquer tecla p/ sair 
+
+---------------------------------------------------------------------------------
+	BYTE "##################################################", 0AH
+	BYTE "#                               X          |   $ #", 0AH
+	BYTE "#   O#############################################", 0AH
+	BYTE "#    #OC  +                                #   @ #", 0AH
+	BYTE "#    #  #################################  #     #", 0AH
+	BYTE "#    # O#    +++                        #  #     #", 0AH
+	BYTE "#    #  #   #########################   #  #     #", 0AH
+	BYTE "#    #  #   #                       #   #  #     #", 0AH
+	BYTE "#    #  #   #   ##################  #   #  #     #", 0AH
+	BYTE "#    #  #   #   # $  #  O        #  #   #  #     #", 0AH
+	BYTE "#    #  #   #   #             #     #   #  #     #", 0AH
+	BYTE "#    #  #   #   #####################   #  #     #", 0AH
+	BYTE "#    #  #   #                           #  #     #", 0AH
+	BYTE "#    #  #   #############################O #     #", 0AH
+	BYTE "#    #  #                                  #     #", 0AH
+	BYTE "#       ################################   #     #", 0AH
+	BYTE "#                                          #     #", 0AH
+	BYTE "#  O #######################################     #", 0AH
+	BYTE "#                                                #", 0AH
+	BYTE "##################################################", 0AH
+---------------------------------------------------------------------------------
+
+                                         _                                
+   ___    ___    _ __ ___     ___       (_)   ___     __ _    __ _   _ __ 
+  / __|  / _ \  | '_ ` _ \   / _ \      | |  / _ \   / _` |  / _` | | '__|
+ | (__  | (_) | | | | | | | | (_) |     | | | (_) | | (_| | | (_| | | |   
+  \___|  \___/  |_| |_| |_|  \___/     _/ |  \___/   \__, |  \__,_| |_|   
+                                      |__/           |___/                
+                                                                          
+->	mova o personagem ( @ ), utlizando as teclas   A (esquerda), W (cima),
+    D (direita), S (baixo).                                               
+                                                                          
+->  chegue ao objetivo ( $ ), antes que o seu                             
+                                                                          
+               TEMPO:      ██████████████████████████████                 
+    se esgote !!                                                          
+                                                                          
+->  desvie das criatudas que estão andando pelo mapa:                     
+    #                                              #                      
+                                                                          
+                                                                          
+->  Aumente seu Score coletando os Bonus ( + )                            
+                                                                          
+    E ACIMA DE TUDO, DIVIRTA-SE :D                                         
