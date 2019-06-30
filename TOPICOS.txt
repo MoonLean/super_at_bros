@@ -11,11 +11,11 @@ Como usar o GIT
 	- |OK| como inserir som
 	- |OK| layout dos mapas prontos (Luan)
 	- |CANCELADO| tela inicial em assembly pronto, tomar como base a tela do exemplo em C (Caique)
-	- || alterar a cor dos caracteres
+	- |OK| alterar a cor dos caracteres
 	- |OK| comando p/ limpar console
 
 # todo list // lista de a fazeres
-	- |EM PROCESSO...| tela game over
-	- || tela informações
+	- |OK| tela game over
+	- |OK| tela informações
 	- |OK| movimento personagem
 	- |OK| movimento criatura (Luan)

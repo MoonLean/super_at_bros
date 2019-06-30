@@ -13,6 +13,6 @@ INCLUDELIB Winmm.lib
 	SND_ASYNC	 DWORD 1h
 	SND_FILENAME DWORD 00020000h
 
-	winnersong BYTE "c:\\winner.wav",0
-	meme_credits BYTE "c:\\meme_credits.wav",0
+	winnersong BYTE "winner.wav",0
+	meme_credits BYTE "meme_credits.wav",0
 

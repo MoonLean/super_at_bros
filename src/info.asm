@@ -6,6 +6,8 @@ TITLE INFORMACOES MODULO, SUPER @ BROS
 
 
 .DATA
+	CLEARZERO BYTE 11
+
 	info_msg_nivel \
 	BYTE "                                                                                 ", 0AH
 	BYTE "                                  F I M  D E J O G O                             ", 0AH
@@ -72,11 +74,17 @@ INFO PROC
 	MOV EDX, OFFSET info_msg_sair
 	CALL WriteString
 	
+	; to setando a zero flag
+	TEST CLEARZERO, 0
 	
 	INPUT_KEY:
-		CALL ReadKey
+		MOV EAX, 5
+		CALL Delay
+		CALL ReadKey		
 		JZ INPUT_KEY
 	;após qquer tecla pressionada
+	MOV EAX, 20
+	CALL Delay
 	JMP QUIT
 INFO ENDP
 

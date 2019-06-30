@@ -20,7 +20,7 @@ INCLUDE info.asm			;
 INCLUDE gameover.asm		;
 INCLUDE menu.asm			;
 INCLUDE comojogar.asm		;
-INCLUDE win.asm
+INCLUDE win.asm				;
 INCLUDE nivel1.asm			;
 INCLUDE nivel2.asm			;
 INCLUDE nivel3.asm			;
