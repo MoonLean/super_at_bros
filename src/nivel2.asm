@@ -5,7 +5,7 @@ TITLE NIVEL 2, SUPER @ BROS
 ; Creation Date:
 ; other inclusions
 
-CLOCKWILSON = CLOCK + 200
+CLOCKWILSON = CLOCK + 250
 
 .DATA
 	GATE_2 WORD 728,729,730,731,732,733
@@ -19,10 +19,7 @@ CLOCKWILSON = CLOCK + 200
 	<564, 1, 1>,
 	<606, 1, 1>,
 	<656, 1, 1>,
-	<668, 1, 1>,
 	<891, 1, 1>,
-	<892, 1, 1>,
-	<893, 1, 1>,
 	<1072, 1, 1>,
 	<1082, 1, 0>,
 	<1124, 1, 1>,
@@ -52,11 +49,11 @@ CLOCKWILSON = CLOCK + 200
 	BYTE "# O                                        X  O  #", 0AH
 	BYTE "#  O  ###################################### O   #", 0AH
 	BYTE "#     #                                    #O    #", 0AH
-	BYTE "#    O#                                    #     #", 0AH
+	BYTE "#     #                                    #     #", 0AH
 	BYTE "#     #      #------#################      #     #", 0AH
 	BYTE "#     #      #                      #      #     #", 0AH
 	BYTE "#     #      ###########            #      #     #", 0AH
-	BYTE "#### ##      #          OOO         #      #     #", 0AH
+	BYTE "#### ##      #          O           #      #     #", 0AH
 	BYTE "#    +#      #          #############      #     #", 0AH
 	BYTE "#    +#      #            +         #      #     #", 0AH
 	BYTE "#    +# O    #            +        $#      #     #", 0AH
