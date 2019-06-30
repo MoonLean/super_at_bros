@@ -21,19 +21,20 @@ TITLE NIVEL 2, SUPER @ BROS
 	<891, 1, 1>,
 	<892, 1, 1>,
 	<893, 1, 1>,
-	<941, 1, 1>,
 	<1072, 1, 1>,
 	<1082, 1, 0>,
 	<1124, 1, 1>,
 	<1176, 1, 1>,
-	<1186, 1, 1>,
 	<1228, 1, 1>,	
 	<1281, 1, 1>,
 	<1283, 1, 1>,
 	<1285, 1, 1>,
 	<1333, 1, 1>,
 	<1335, 1, 1>,
-	<1337, 1, 1>
+	<1337, 1, 1>,
+	<1028, 1, 0>
+	
+	
 
 	mapa2 \
 	BYTE 9 DUP(BLOCK,SPACE), "SUPER @ BROS ",9 DUP(BLOCK,SPACE), BLOCK,0AH
@@ -45,8 +46,8 @@ TITLE NIVEL 2, SUPER @ BROS
 	BYTE BLOCK,"   TEMPO :    ",30 DUP(INDICADOR_TEMPO),"    ", BLOCK, 0AH
 	BYTE BLOCK,"                                                ", BLOCK, 0AH
 	BYTE "##################################################", 0AH
-	BYTE "#O    @            S           +                 #", 0AH
-	BYTE "# O                   C                    X  O  #", 0AH
+	BYTE "#O    @                        +                 #", 0AH
+	BYTE "# O                                        X  O  #", 0AH
 	BYTE "#  O  ###################################### O   #", 0AH
 	BYTE "#     #                                    #O    #", 0AH
 	BYTE "#    O#                                    #     #", 0AH
@@ -54,12 +55,12 @@ TITLE NIVEL 2, SUPER @ BROS
 	BYTE "#     #      #                      #      #     #", 0AH
 	BYTE "#     #      ###########            #      #     #", 0AH
 	BYTE "#### ##      #          OOO         #      #     #", 0AH
-	BYTE "#    +#      #         O#############      #     #", 0AH
-	BYTE "#    +#      #            ++++      #      #     #", 0AH
-	BYTE "#    +#      #            ++++     $#      #     #", 0AH
+	BYTE "#    +#      #          #############      #     #", 0AH
+	BYTE "#    +#      #            +         #      #     #", 0AH
+	BYTE "#    +# O    #            +        $#      #     #", 0AH
 	BYTE "#O   +#    O ########################      #     #", 0AH ;21
-	BYTE "# O  +#                               $    #     #", 0AH
-	BYTE "#  O +#   C  O                             #     #", 0AH
+	BYTE "# O  +#                                    #     #", 0AH
+	BYTE "#  O +#   C                                #     #", 0AH
 	BYTE "#   OS###############################      #     #", 0AH
 	BYTE "#     O O O                                      #", 0AH
 	BYTE "#      O O O                                     #", 0AH

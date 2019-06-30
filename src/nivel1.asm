@@ -46,7 +46,7 @@ TITLE NIVEL 1, SUPER @ BROS
 	BYTE "#     #      #      ############    #      #     #", 0AH
 	BYTE "#     #      #     +# $        # +  #      #     #", 0AH
 	BYTE "#     #      #      #    +     #    #      #     #", 0AH
-	BYTE "#    $#      #      #######O   #    #      #     #", 0AH
+	BYTE "#     #      #      #######O   #    #      #     #", 0AH
 	BYTE "#     #      #                      #      #     #", 0AH
 	BYTE "#     #      ########################      #     #", 0AH
 	BYTE "#     #                                    #     #", 0AH
