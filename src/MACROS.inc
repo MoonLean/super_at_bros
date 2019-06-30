@@ -104,9 +104,9 @@ PlaySound PROTO,
 		
 
 ;--------------------------------------------------------------;
-; NOME:   IMPRIMI_MAPA                                         ;
-; FUNCAO: move o cursor para o inicio da tela e imprime o mapa ;
-; PARAMETROS: mapa                                             ;
+; NOME:   GOLINE                                               ;
+; FUNCAO: move o cursor para a linha de numero N               ;
+; PARAMETROS: N                                                ;
 ;                                                              ;
 ;--------------------------------------------------------------;
 GOLINE MACRO N
