@@ -9,6 +9,7 @@
 SPACE				= 20h 		; espaço	
 BLOCK				= 0FEh
 INDICADOR_TEMPO		= 0DBh
+COMERCIAL			= 0B8h		; simbolo comercial
 CLOCK				= 300
 CLOCKER				= CLOCK + 500
 OBJ_IMOVEL			= 23h		; #

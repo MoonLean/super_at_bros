@@ -81,7 +81,7 @@ TITLE CREDITOS E COMO JOGAR, SUPER @ BROS
 	BYTE "                                                  ", 0AH
 	BYTE "    PROF.: LUCIANO NERIS                          ", 0AH
 	BYTE "                                                  ", 0Ah
-	BYTE "    2019 © todos os direitor reservados           ", 0AH
+	BYTE "    2019 ",COMERCIAL," todos os direitor reservados           ", 0AH
 	BYTE "                                                  ", 0AH
 	BYTE "       pressione qualquer tecla p/ voltar         ", 0AH, 0
 
@@ -116,19 +116,6 @@ COMOJOGAR PROC
 	GOLINE 0
 	MOV EDX, OFFSET clear_how_play
 	CALL WriteString
-	
-	COMMENT &
-	MOV EAX, 23
-	MUL EDX
-	
-	MOV ECX, EAX
-	MOV AL, SPACE
-	MOV EDI, OFFSET how_play
-	REP STOSB
-	
-	MOV EDX, OFFSET how_play
-	CALL WriteString
-	&
 	
 	GOLINE 0
 	
