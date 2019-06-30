@@ -5,11 +5,16 @@ TITLE NIVEL 3, SUPER @ BROS
 ; Creation Date:
 ; other inclusions
 
+
 .DATA
 	GATE_3 WORD 502
 	
 	CRIATURAS3 \
-	CRIATURA_DINAMICA <514, 1, 1>
+	CRIATURA_DINAMICA <514, 1, 1>,
+	<567, 1, 1>,
+	<891, 1, 0>,
+	<1112, 1, 1>,
+	<1278, 1, 1>
 	
 	
 
@@ -284,7 +289,7 @@ NIVEL3 PROC
 			; otherwise
 	
 			; posiciona personagem
-			MOV mapa2[ESI], PERSONAGEM
+			MOV mapa3[ESI], PERSONAGEM
 			; atualiza posicao
 			MOV PERSON, ESI
 	
@@ -319,7 +324,7 @@ INPUT_NIVEL_3::	IMPRIMI_MAPA mapa3
 				MOVIMENTA_CRIATURAS CRIATURAS3, mapa3, INPUT_NIVEL_3
 				
 				NEXT_INPUT:
-				CMP COUNTER_CLOCK, CLOCK
+				CMP COUNTER_CLOCK, CLOCKER
 				JB OVER_TIMER
 				
 				TIMER mapa3, INPUT_NIVEL_3

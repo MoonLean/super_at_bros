@@ -1,4 +1,3 @@
-
 TITLE SUPER@BROS - JOGO BASEADO EM ASSEMBLY
 
 ; Program Description:		Um jogo arcade ASCII desenvolvido na línguagem Assembly como requisito parcial

@@ -66,7 +66,7 @@ INFO PROC
 	MOV EDX, OFFSET info_msg_tempo
 	CALL WriteString
 	
-	MOV AX, TEMPO_TOTAL
+	MOV EAX, TEMPO_TOTAL
 	CALL WriteDec
 	
 	MOV EDX, OFFSET info_msg_sair

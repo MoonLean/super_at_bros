@@ -10,6 +10,7 @@ SPACE				= 20h 		; espaço
 BLOCK				= 0FEh
 INDICADOR_TEMPO		= 0DBh
 CLOCK				= 300
+CLOCKER				= CLOCK + 500
 OBJ_IMOVEL			= 23h		; #
 PERSONAGEM			= 40h		; @
 OBJETIVO			= 24h		; $

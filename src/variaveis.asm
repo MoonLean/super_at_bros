@@ -12,7 +12,7 @@ TITLE VARIAVEIS MODULO, SUPER @ BROS
 
 		NIVEIS_CONCLUIDOS 			BYTE 0					;incrementa a cada nivel concluido
 		
-		TEMPO_TOTAL					WORD 0					;a soma dos tempos gastos em cada mapa
+		TEMPO_TOTAL					DWORD 0					;a soma dos tempos gastos em cada mapa
 	
 		PERSON 						DWORD 461				;guarda a posicao do personagem, inicialmente no nivel 1
 	
